@@ -1,3 +1,6 @@
+using System;
+using System.Linq;
+
 namespace TGS.Challenge
 {
   /*
@@ -15,11 +18,27 @@ namespace TGS.Challenge
         sure the unit tests are correct too.
      */
 
-    public class EquivalenceIndex
+  public class EquivalenceIndex
+  {
+    public int Find(int[] numbers)
     {
-      public int Find(int[] numbers)
+      var indexSum = 0;
+      var indexCounter = 0;
+      var sum = numbers.Sum();
+
+      foreach (var number in numbers)
       {
-        return -99;
+        indexCounter++;
+        indexSum += Convert.ToInt32(number);
+        sum -= number;
+
+        if (indexSum == sum)
+        {
+          return indexCounter;
+        }
       }
+
+      return -1;
     }
+  }
 }
