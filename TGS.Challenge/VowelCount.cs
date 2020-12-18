@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace TGS.Challenge
@@ -15,6 +17,8 @@ namespace TGS.Challenge
    */
   public class VowelCount
   {
+    private static readonly List<string> listOfVowels = new List<string>() { "a", "e", "i", "o", "u" };
+
     public int Count(string value)
     {
       int totalVowels = 0;
@@ -27,7 +31,7 @@ namespace TGS.Challenge
         for (var x = 0; x <= value.Length - 1; x++)
         {
           string indexValue = value.ToLower()[x].ToString();
-          if (indexValue.Equals("a") || indexValue.Equals("e") || indexValue.Equals("i") || indexValue.Equals("o") || indexValue.Equals("u"))
+          if (listOfVowels.Any(v => v.Equals(indexValue)))
           {
             totalVowels++;
           }
