@@ -35,7 +35,6 @@ namespace TGS.Challenge
       }
       else if (result.Length < 3)
       {
-        //result.
         return result;
       }
       return result;
