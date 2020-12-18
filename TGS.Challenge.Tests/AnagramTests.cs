@@ -37,7 +37,13 @@ namespace TGS.Challenge.Tests
     {
       var result = _anagram.AreAnagrams("Funeral", "Reel fun");
 
-      Assert.True(result);
+      // Assert.True(result);
+      //This should be False, reasons:
+      // 1. Word 1 has only 1 e, word 2 has 2
+      // 2. Word 1 has an a, word 2 does not
+      //  i. Word 1 result when sorted: aeflnru
+      //  ii. Word 1 result when sorted: eeflnru
+      Assert.False(result);
     }
 
     [Fact]
