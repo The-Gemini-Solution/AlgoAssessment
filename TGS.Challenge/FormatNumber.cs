@@ -33,8 +33,26 @@ namespace TGS.Challenge
       {
         throw new ArgumentOutOfRangeException();
       }
-      else if (result.Length < 3)
+      else if (result.Length > 3)
       {
+        var maxIndex = result.Length;
+        var commasToAdd = (result.Length / 3);
+        var loopCounter = 0;
+        while (commasToAdd >= 0)
+        {
+          loopCounter += 1;
+          var commaPlacement = 3 * loopCounter;
+
+          if ((maxIndex - commaPlacement) > 0)
+          {
+            var x = result[maxIndex - commaPlacement].ToString();
+            result = result.Substring(0, maxIndex - commaPlacement)
+               + $",{x}"
+               + result.Substring(maxIndex - commaPlacement + 1);
+          }
+          commasToAdd -= 1;
+        }
+
         return result;
       }
       return result;

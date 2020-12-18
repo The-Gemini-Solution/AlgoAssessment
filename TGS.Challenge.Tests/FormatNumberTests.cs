@@ -78,7 +78,7 @@ namespace TGS.Challenge.Tests
     [Fact]
     public void Value_10000_Returns_ValidString()
     {
-      var formatted = _formatNumber.Format(1);
+      var formatted = _formatNumber.Format(10000);
 
       Assert.Equal("10,000", formatted);
     }
@@ -86,7 +86,7 @@ namespace TGS.Challenge.Tests
     [Fact]
     public void Value_100000_Returns_ValidString()
     {
-      var formatted = _formatNumber.Format(1);
+      var formatted = _formatNumber.Format(100000);
 
       Assert.Equal("100,000", formatted);
     }
@@ -94,17 +94,25 @@ namespace TGS.Challenge.Tests
     [Fact]
     public void Value_1000000_Returns_ValidString()
     {
-      var formatted = _formatNumber.Format(1);
+      var formatted = _formatNumber.Format(1000000);
 
       Assert.Equal("1,000,000", formatted);
     }
 
     [Fact]
+    public void Value_35235235_Expected_Incorrect_Result()
+    {
+      var formatted = _formatNumber.Format(35235235);
+
+      Assert.NotEqual("35,2352,35", formatted);
+    }
+
+    [Fact]
     public void Value_35235235_Returns_ValidString()
     {
-      var formatted = _formatNumber.Format(1);
+      var formatted = _formatNumber.Format(35235235);
 
-      Assert.Equal("35,2352,35", formatted);
+      Assert.Equal("35,235,235", formatted);
     }
   }  
 }
