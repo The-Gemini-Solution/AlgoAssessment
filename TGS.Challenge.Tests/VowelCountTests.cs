@@ -23,9 +23,6 @@ namespace TGS.Challenge.Tests
     {
       var count = _vowelCount.Count("AEIOU");
 
-      //Assert.Equal(count, 6);
-      // Test result adjusted to be 5, total count of chars are only 5
-      // Added a new test to reflect negative outcoming with old expectation
       Assert.Equal(count, 5);
     }
 
@@ -48,19 +45,17 @@ namespace TGS.Challenge.Tests
     [Fact]
     public void abcdefghijklmnopqrstuvwxyz__incorrect_result_expected()
     {
-      var count = _vowelCount.Count("lmnpqr");
+      var count = _vowelCount.Count("abcdefghijklmnopqrstuvwxyz");
 
-      // This should be NotEqual, string provided does not have vowels
-      // Added test to indicate correct expectation
-      Assert.NotEqual(count, 5);
+      Assert.Equal(count, 5);
     }
 
     [Fact]
     public void abcdefghijklmnopqrstuvwxyz_Returns_Correct_Count()
     {
-      var count = _vowelCount.Count("lmnpqr");
+      var count = _vowelCount.Count("abcdefghijklmnopqrstuvwxyz");
 
-      Assert.Equal(count, 0);
+      Assert.Equal(count, 5);
     }
 
     [Fact]
