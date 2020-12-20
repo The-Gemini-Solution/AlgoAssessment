@@ -12,18 +12,9 @@ namespace TGS.Challenge.Tests
     }
 
     [Fact]
-    public void Returns_Index_ForValidNumberSequence_IncorrectSequenceSupplied()
-    {
-      var index = _equivalenceIndex.Find(new int[] { 1, 2, 3, 4, 5, 7, 8, 10, 12 });
-
-      Assert.NotEqual(index, 6);
-      Assert.Equal(index, -1);
-    }
-
-    [Fact]
     public void Returns_Index_ForValidNumberSequence()
     {
-      var index = _equivalenceIndex.Find(new int[] { 1, 2, 3, 4, 5, 7, 10, 12 });
+      var index = _equivalenceIndex.Find(new int[] { 1, 2, 3, 4, 5, 7, 8, 10, 12 });
 
       Assert.Equal(index, 6);
     }

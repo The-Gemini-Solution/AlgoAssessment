@@ -28,14 +28,14 @@ namespace TGS.Challenge
 
       foreach (var number in numbers)
       {
-        indexCounter++;
-        indexSum += Convert.ToInt32(number);
         sum -= number;
-
         if (indexSum == sum)
         {
           return indexCounter;
         }
+
+        indexCounter++;
+        indexSum += Convert.ToInt32(number);
       }
 
       return -1;
