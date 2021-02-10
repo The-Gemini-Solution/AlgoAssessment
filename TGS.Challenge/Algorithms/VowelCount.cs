@@ -17,6 +17,9 @@ namespace TGS.Challenge.Algorithms
     {
         public int Count(string value)
         {
+            if (value.Length == 0)
+                throw new ArgumentException();
+
             char[] vowels = new char[] { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
             return value.ToCharArray().Where(c => vowels.Any(v => v == c)).Count();
         }
