@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 namespace TGS.Challenge.Algorithms
 {
   /*
@@ -24,7 +27,49 @@ namespace TGS.Challenge.Algorithms
     {
       public bool AreAnagrams(string word1, string word2)
       {
-        return false;
+            bool isAnagram = false;
+
+            if (word2.Length == 0 || word1.Length == 0)
+                throw new ArgumentException();
+
+            var word1CharArray = word1.ToLower().ToCharArray();
+            var word2CharArray = word2.ToLower().ToCharArray();
+            var dict = new Dictionary<char, int>();
+            for (int i = 0; i < word1CharArray.Length; i++)
+			{
+                var c = word1CharArray[i];
+                if(c != '_' || c != ' ')
+				{
+                    if (dict.ContainsKey(c))
+                    {
+                        int cCount;
+                        dict.TryGetValue(c, out cCount);
+                        cCount++;
+                        dict[c] = cCount;
+                        if (cCount % 2 == 0)
+                        {
+                            isAnagram = true;
+						}
+                    }
+                    else
+                    {
+                        var matchingCharactersLen = word2CharArray.Where(a => a == c).Count();
+                        if (matchingCharactersLen >= 1)
+                        {
+                            isAnagram = true;
+                        }
+                        else
+                        {
+                            isAnagram = false;
+                            break;
+                        }
+                        dict.Add(c, matchingCharactersLen + 1);
+                    }
+                } 
+                
+            }
+
+            return isAnagram;
       }
     }
 }
