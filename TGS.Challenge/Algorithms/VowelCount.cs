@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace TGS.Challenge.Algorithms
 {
@@ -16,7 +17,8 @@ namespace TGS.Challenge.Algorithms
     {
         public int Count(string value)
         {
-            return -1;
+            char[] vowels = new char[] { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+            return value.ToCharArray().Where(c => vowels.Any(v => v == c)).Count();
         }
     }
 }
