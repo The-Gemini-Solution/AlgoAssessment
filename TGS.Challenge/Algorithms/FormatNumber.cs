@@ -26,7 +26,35 @@ namespace TGS.Challenge.Algorithms
     {
         public string Format(int value)
         {
-            return string.Empty;
+            if (value < 0 || value > (1000000000 - 1))
+                throw new ArgumentOutOfRangeException();
+
+            var stringValue = value.ToString();
+            if(stringValue.Length <= 3 && stringValue.Length > 0)
+			{
+                return stringValue;
+			}
+            else
+			{
+                string formattedValue = "";
+                var arrValue = stringValue.ToCharArray();
+                int counter = 0;
+                for(int i = arrValue.Length - 1; i >= 0; i--)
+				{
+                    // increment counter
+                    counter++;
+                    // append string value
+                    formattedValue = arrValue[i] + formattedValue;
+                    if(counter == 3 && i != 0)
+					{
+                        // reset counter
+                        counter = 0;
+                        formattedValue = "," + formattedValue;
+
+                    }
+                }
+                return formattedValue;
+			}
         }
     }
 }
