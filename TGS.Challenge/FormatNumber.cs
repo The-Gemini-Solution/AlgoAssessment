@@ -26,7 +26,22 @@ namespace TGS.Challenge
     {
         public string Format(int value)
         {
-            return string.Empty;
+            IsValidInt(value);
+
+            return FormatIntToString(value);
+        }
+
+        private void IsValidInt(int value)
+        {
+            if(value < 0 || value > 1000000000)
+            {
+                throw new ArgumentOutOfRangeException("Input must be greater or equal to 0 AND lesser or equal to 1000000000.");
+            }
+        }
+
+        private string FormatIntToString(int value)
+        {
+            return value.ToString("N0");
         }
     }
 }
