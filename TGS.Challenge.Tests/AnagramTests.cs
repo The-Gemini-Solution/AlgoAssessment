@@ -30,7 +30,7 @@ namespace TGS.Challenge.Tests
     {
       var result = _anagram.AreAnagrams("Dormitory", "Dirty_room");
 
-      Assert.IsTrue(result);
+      Assert.IsFalse(result);
     }
 
     [Test()]
@@ -38,7 +38,7 @@ namespace TGS.Challenge.Tests
     {
       var result = _anagram.AreAnagrams("Funeral", "Reel fun");
 
-      Assert.IsTrue(result);
+      Assert.IsFalse(result);
     }
 
     [Test()]
@@ -46,7 +46,7 @@ namespace TGS.Challenge.Tests
     {
       var result = _anagram.AreAnagrams("School master?!", "!?The classroom");
 
-      Assert.IsTrue(result);
+      Assert.IsFalse(result);
     }
     
     [Test()]
@@ -62,7 +62,7 @@ namespace TGS.Challenge.Tests
     {
       var result = _anagram.AreAnagrams("Funeral", "Real fun");
 
-      Assert.IsTrue(result);
+      Assert.IsFalse(result);
     }
   }
 }
