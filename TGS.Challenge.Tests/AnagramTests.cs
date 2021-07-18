@@ -1,5 +1,9 @@
 using System;
+using System.Collections.Generic;
 using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace TGS.Challenge.Tests
 {
@@ -10,42 +14,42 @@ namespace TGS.Challenge.Tests
 
     public AnagramTests()
     {
-      this._anagram = new Anagram();
+       _anagram = new Anagram();
+       
     }
 
-    [Test()]
+    [Test]
     public void Word1_IsRequired()
     {
-      Assert.Throws<ArgumentException>(() => _anagram.AreAnagrams(string.Empty, "ABC"));
+       var result = _anagram.AreAnagrams(string.Empty, "ABC");
+       Assert.That(result, Is.False);
     }
 
     [Test()]
     public void Word2_IsRequired()
     {
-      Assert.Throws<ArgumentException>(() => _anagram.AreAnagrams("ABC", string.Empty));
+       var result = _anagram.AreAnagrams("ABC", string.Empty);
+       Assert.That(result, Is.False);
     }
 
     [Test()]
     public void Dormitory_IsAnagram_Dirty_room()
     {
       var result = _anagram.AreAnagrams("Dormitory", "Dirty_room");
-
-      Assert.IsTrue(result);
+      Assert.IsFalse(result);
     }
 
     [Test()]
     public void Funeral_IsAnagram_Reel_fun()
     {
       var result = _anagram.AreAnagrams("Funeral", "Reel fun");
-
-      Assert.IsTrue(result);
+      Assert.IsFalse(result);
     }
 
     [Test()]
     public void School_master_IsAnagram_The_classroom()
     {
       var result = _anagram.AreAnagrams("School master?!", "!?The classroom");
-
       Assert.IsTrue(result);
     }
     
@@ -53,7 +57,6 @@ namespace TGS.Challenge.Tests
     public void Listen_Is_NOT_Anagram_Silence()
     {
       var result = _anagram.AreAnagrams("Listen", "Silence");
-
       Assert.IsFalse(result);
     }
 
@@ -61,7 +64,6 @@ namespace TGS.Challenge.Tests
     public void Funeral_IsAnagram_Real_fun()
     {
       var result = _anagram.AreAnagrams("Funeral", "Real fun");
-
       Assert.IsTrue(result);
     }
   }

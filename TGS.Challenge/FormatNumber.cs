@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Globalization;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace TGS.Challenge
 {
@@ -24,9 +27,9 @@ namespace TGS.Challenge
      */
     public class FormatNumber
     {
-        public string Format(int value)
-        {
-            return string.Empty;
-        }
+       public string Format(int value)
+       {
+          return string.Format("{0:n0}", value);
+       }
     }
 }
